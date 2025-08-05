@@ -1,0 +1,22 @@
+---
+globs: 
+alwaysApply: false
+title: Documentation Standards
+description: Guidelines for documenting code and APIs.
+---
+
+# Documentation Standards
+
+## Code Documentation
+- Use JSDoc for all public APIs
+- Include usage examples in comments
+- Document complex algorithms and business logic
+- Maintain up-to-date README files
+- Include setup and deployment instructions
+
+## API Documentation
+- Use OpenAPI/Swagger for REST API documentation
+- Include request/response examples
+- Document error codes and messages
+- Provide integration guides
+- Include performance considerations

@@ -1,0 +1,19 @@
+---
+globs: 
+alwaysApply: false
+title: Security Checklist
+description: A comprehensive checklist for securing your application.
+---
+
+# Security Checklist
+
+- [ ] JWT authentication implemented
+- [ ] Role-based access control configured
+- [ ] Input validation and sanitization
+- [ ] Rate limiting enabled
+- [ ] Data encryption at rest
+- [ ] TLS encryption in transit
+- [ ] Audit logging implemented
+- [ ] Security headers configured
+- [ ] CORS properly configured
+- [ ] API key validation

@@ -1,0 +1,19 @@
+---
+description: description: High-level context and technology stack for the MCP Knowledge Base Server project, including core technologies, architecture decisions, and development phases.
+globs: 
+alwaysApply: false
+title: Project Context
+---
+
+# Project Context
+
+You are working on a Model Context Protocol (MCP) server that serves as a knowledge base using vector database technology. This server enables AI assistants to access, search, and retrieve information through semantic search capabilities.
+
+**Key Technologies:**
+- **Phase 1**: Bun (JavaScript/TypeScript) runtime with Hono framework
+- **Phase 2**: Go migration (future)
+- **Vector Database**: Weaviate (recommended choice)
+- **Embedding Service**: AI SDK with OpenAI-like API support
+- **Framework**: Hono (Bun), Gin/Echo (Go)
+- **Cache**: Redis
+- **Containerization**: Docker

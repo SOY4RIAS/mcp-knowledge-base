@@ -1,0 +1,22 @@
+---
+globs: 
+alwaysApply: false
+title: Development Workflow
+description: Guidelines for developing and reviewing code.
+---
+
+# Development Workflow
+
+## Git Practices
+- Use descriptive commit messages
+- Create feature branches for new development
+- Require code reviews before merging
+- Maintain clean git history
+- Use conventional commit format
+
+## Code Review Guidelines
+- Review for security vulnerabilities
+- Check performance implications
+- Verify test coverage
+- Ensure documentation is updated
+- Validate error handling

@@ -1,0 +1,21 @@
+---
+globs: 
+alwaysApply: false
+title: Deployment & Operations
+description: Guidelines for deploying and operating applications.
+---
+
+# Deployment & Operations
+
+## Containerization
+- Use multi-stage Docker builds for optimization
+- Implement health checks and readiness probes
+- Use environment-specific configurations
+- Follow security best practices (non-root user, minimal base images)
+
+## Monitoring
+- Implement comprehensive logging with structured format
+- Add metrics collection for performance monitoring
+- Set up health checks for all dependencies
+- Monitor error rates and response times
+- Implement alerting for critical issues

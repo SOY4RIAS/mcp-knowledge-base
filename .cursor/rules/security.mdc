@@ -1,0 +1,22 @@
+---
+description: Guidelines for implementing security measures in your application.
+globs: 
+alwaysApply: false
+title: Security Implementation
+---
+
+# Security Implementation
+
+## Authentication & Authorization
+- Implement JWT-based authentication with proper token validation
+- Use role-based access control (Admin, Editor, Viewer)
+- Implement API key authentication for service-to-service communication
+- Add rate limiting to prevent abuse
+- Validate and sanitize all input data
+
+## Data Protection
+- Encrypt sensitive data at rest using AES-256
+- Use TLS 1.3 for all communications
+- Implement secure WebSocket connections
+- Add audit logging for compliance
+- Follow OWASP security guidelines

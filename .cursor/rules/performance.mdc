@@ -1,0 +1,21 @@
+---
+globs: 
+alwaysApply: false
+title: Performance Optimization
+description: Guidelines for optimizing performance in the application.
+---
+
+# Performance Optimization
+
+## Caching Strategy
+- Use Redis for caching search results, embeddings, and metadata
+- Implement appropriate TTL values (search results: 5min, embeddings: 1hour)
+- Use cache warming for frequently accessed data
+- Monitor cache hit rates and optimize accordingly
+
+## Database Optimization
+- Use batch operations for bulk data processing
+- Implement connection pooling
+- Monitor query performance and optimize indexes
+- Use pagination for large result sets
+- Implement query result caching

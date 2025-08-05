@@ -1,0 +1,33 @@
+---
+globs: 
+alwaysApply: false
+title: Vector Database Integration
+description: Best practices and schema design for Weaviate vector database.
+---
+
+# Vector Database Integration
+
+## Weaviate Best Practices
+- Use connection pooling for efficient resource management
+- Implement proper error handling and retry mechanisms
+- Use batch operations for bulk data processing
+- Monitor query performance and optimize indexes
+- Implement health checks for Weaviate connectivity
+
+## Schema Design
+```typescript
+// Document collection schema
+const documentSchema = {
+  class: "Document",
+  description: "Knowledge base documents",
+  properties: [
+    { name: "title", dataType: ["text"] },
+    { name: "content", dataType: ["text"] },
+    { name: "source", dataType: ["text"] },
+    { name: "tags", dataType: ["text[]"] },
+    { name: "created_at", dataType: ["date"] },
+    { name: "updated_at", dataType: ["date"] }
+  ],
+  vectorizer: "text2vec-openai"
+};
+```

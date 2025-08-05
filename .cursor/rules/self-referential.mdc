@@ -1,0 +1,48 @@
+---
+globs: 
+alwaysApply: false
+title: Self-Referential Knowledge Base
+description: The MCP Knowledge Base Server will use itself to store and retrieve development-related information, creating a self-documenting and self-improving system.
+---
+
+# Self-Referential Knowledge Base
+
+## Overview
+The MCP Knowledge Base Server will use itself to store and retrieve development-related information, creating a self-documenting and self-improving system.
+
+## Implementation Guidelines
+
+### Auto-Indexing Service
+- Automatically index all project documentation, code comments, and development notes
+- Monitor file changes and Git commits for real-time updates
+- Extract development context from code changes and documentation
+- Maintain development history and decision records
+
+### Development Context Extraction
+```typescript
+interface DevelopmentContext {
+  git_commit: string;
+  branch: string;
+  timestamp: Date;
+  environment: 'development' | 'staging' | 'production';
+  version: string;
+  dependencies: string[];
+  affected_files: string[];
+  performance_impact: 'low' | 'medium' | 'high';
+  security_impact: 'low' | 'medium' | 'high';
+}
+```
+
+### Use Cases
+- **Onboarding**: New developers can query the knowledge base about project structure
+- **Troubleshooting**: Search for similar issues and their solutions
+- **Architecture Reviews**: Understand design decisions and their context
+- **Performance Optimization**: Find historical performance data
+- **Feature Development**: Access related features and implementation patterns
+
+### Best Practices
+- Ensure self-indexing doesn't create infinite loops
+- Implement proper filtering to avoid indexing sensitive information
+- Use appropriate tags and metadata for development documents
+- Maintain clear separation between user content and development content
+- Implement rate limiting for self-indexing operations

@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: false
+title: Development Standards
+description: Guidelines for developing high-quality, maintainable, and secure code.
+---
+
+# Development Standards
+
+## Code Quality
+- Write self-documenting code with clear variable and function names
+- Use TypeScript interfaces for all data models
+- Implement comprehensive error handling with custom error types
+- Add JSDoc comments for public APIs and complex functions
+- Follow consistent code formatting (use Prettier)
+
+## Testing Requirements
+- Write unit tests for all core services (aim for 90%+ coverage)
+- Implement integration tests for API endpoints
+- Add performance tests for vector operations
+- Include security tests for authentication and authorization
+- Use mocking strategies for external dependencies (Weaviate, AI SDK)
+
+## File Structure
+```
+src/
+├── api/                    # API layer (MCP, REST, WebSocket)
+├── services/              # Business logic services
+├── models/                # Data models and interfaces
+├── utils/                 # Utility functions and helpers
+├── config/                # Configuration management
+├── middleware/            # Hono middleware
+├── tests/                 # Test files
+└── docs/                  # API documentation
+```

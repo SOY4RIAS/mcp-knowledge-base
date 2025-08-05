@@ -1,0 +1,16 @@
+---
+globs: 
+alwaysApply: false
+title: Performance Targets
+description: Performance targets for the Cursor search engine.
+---
+
+# Performance Targets
+
+- **Search Latency**: < 100ms (95th percentile)
+- **Document Ingestion**: < 5 seconds per document
+- **Embedding Generation**: < 2 seconds per document
+- **API Endpoints**: < 50ms (95th percentile)
+- **Concurrent Users**: 1000+ simultaneous users
+- **Document Storage**: 10M+ documents
+- **Vector Storage**: 1B+ vectors

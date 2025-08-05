@@ -1,0 +1,39 @@
+---
+globs: 
+alwaysApply: false
+title: AI SDK Integration
+description: Guidelines for integrating AI SDKs into your application.
+---
+
+# AI SDK Integration
+
+## Embedding Service Configuration
+```typescript
+interface EmbeddingConfig {
+  provider: 'openai' | 'local' | 'custom';
+  model: string;
+  apiKey?: string;
+  baseUrl?: string; // For local LLM endpoints
+  dimensions: number;
+  timeout?: number;
+  retries?: number;
+}
+
+// AI SDK service implementation
+class EmbeddingService {
+  constructor(private config: EmbeddingConfig) {}
+  
+  async generateEmbedding(text: string): Promise<number[]> {
+    // Implementation using AI SDK
+  }
+  
+  async generateEmbeddings(texts: string[]): Promise<number[][]> {
+    // Batch implementation
+  }
+}
+```
+
+## Provider Support
+- **OpenAI**: Standard OpenAI embedding models
+- **Local LLM**: Support for local endpoints (Ollama, etc.)
+- **Custom**: Any OpenAI-compatible API endpoint

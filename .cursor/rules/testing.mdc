@@ -1,0 +1,33 @@
+---
+globs: 
+alwaysApply: false
+title: Testing Strategy
+description: Guidelines for testing document processing workflows and vector search functionality.
+---
+
+# Testing Strategy
+
+## Unit Testing
+```typescript
+describe('Document Processing Service', () => {
+  it('should chunk document with overlap', async () => {
+    const service = new DocumentProcessingService();
+    const document = createTestDocument();
+    
+    const chunks = await service.chunkDocument(document, {
+      chunkSize: 1000,
+      overlap: 200
+    });
+    
+    expect(chunks).toHaveLength(3);
+    expect(chunks[0].content.length).toBeLessThanOrEqual(1000);
+  });
+});
+```
+
+## Integration Testing
+- Test end-to-end document processing workflows
+- Verify MCP protocol compliance
+- Test vector search functionality
+- Validate authentication and authorization
+- Test error scenarios and recovery

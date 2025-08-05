@@ -1,0 +1,18 @@
+---
+globs: 
+alwaysApply: false
+title: Quality Gates
+description: Guidelines for ensuring code quality and meeting requirements before merging.
+---
+
+# Quality Gates
+
+Before merging any code:
+- [ ] All tests pass (unit, integration, performance)
+- [ ] Code coverage meets requirements (90%+)
+- [ ] Security scan passes
+- [ ] Performance benchmarks met
+- [ ] Documentation updated
+- [ ] Code review completed
+- [ ] No linting errors
+- [ ] Build succeeds in CI/CD

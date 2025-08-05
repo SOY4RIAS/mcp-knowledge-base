@@ -1,0 +1,22 @@
+---
+globs: 
+alwaysApply: false
+title: Architecture Principles
+description: Guidelines for designing and organizing software systems.
+---
+
+# Architecture Principles
+
+## System Design
+- Follow modular architecture with clear separation of concerns
+- Implement layered architecture: API Layer → Service Layer → Data Layer
+- Design for scalability from day one (support 1M+ documents, 1B+ vectors)
+- Ensure high performance (< 100ms search latency, 95th percentile)
+- Build with security-first approach (JWT auth, encryption, rate limiting)
+
+## Code Organization
+- Use TypeScript for type safety in Phase 1
+- Implement proper error handling and logging throughout
+- Follow dependency injection patterns for testability
+- Use environment-based configuration management
+- Maintain clear API contracts and documentation

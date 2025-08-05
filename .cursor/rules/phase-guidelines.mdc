@@ -1,0 +1,23 @@
+---
+globs: 
+alwaysApply: false
+title: Phase Guidelines
+description: Guidelines for different phases of development.
+---
+
+# Phase-Specific Guidelines
+
+## Phase 1 (Bun + Hono)
+- Leverage Bun's performance optimizations
+- Use Hono's lightweight and fast framework
+- Use TypeScript for type safety
+- Implement proper async/await patterns
+- Use Bun's built-in testing framework
+- Optimize for Bun's JavaScript runtime
+
+## Phase 2 (Go Migration)
+- Follow Go best practices and conventions
+- Use Go modules for dependency management
+- Implement proper error handling with error wrapping
+- Use Go's concurrency patterns (goroutines, channels)
+- Optimize for Go's performance characteristics

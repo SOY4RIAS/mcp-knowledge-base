@@ -1,0 +1,31 @@
+---
+globs: 
+alwaysApply: false
+title: Emergency Procedures
+description: Guidelines for handling emergency situations and incidents in the Weaviate system.
+---
+
+# Emergency Procedures
+
+## Performance Issues
+1. Check Weaviate query performance
+2. Monitor Redis cache hit rates
+3. Review embedding generation latency
+4. Analyze database connection pooling
+5. Check for memory leaks
+
+## Security Incidents
+1. Rotate all API keys immediately
+2. Review audit logs for suspicious activity
+3. Check for unauthorized access
+4. Validate data integrity
+5. Update security configurations
+
+## Data Loss Prevention
+1. Verify backup procedures
+2. Check data replication status
+3. Validate Weaviate cluster health
+4. Monitor disk space usage
+5. Review error logs for data corruption
+
+Remember: This is a production system handling sensitive data. Always prioritize security, performance, and reliability in your implementation decisions.

@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: false
+title: Common Patterns
+description: A collection of common patterns used in the application.
+---
+
+# Common Patterns
+
+## Service Layer Pattern
+```typescript
+class DocumentService {
+  constructor(
+    private weaviateClient: WeaviateClient,
+    private embeddingService: EmbeddingService,
+    private cache: RedisClient
+  ) {}
+
+  async addDocument(document: Document): Promise<Document> {
+    // Implementation with proper error handling
+  }
+
+  async searchDocuments(query: SearchQuery): Promise<SearchResult[]> {
+    // Implementation with caching and optimization
+  }
+}
+```
+
+## Error Handling Pattern
+```typescript
+class AppError extends Error {
+  constructor(
+    message: string,
+    public statusCode: number,
+    public code: string
+  ) {
+    super(message);
+    this.name = 'AppError';
+  }
+}
+
+// Usage
+throw new AppError('Document not found', 404, 'DOCUMENT_NOT_FOUND');
+```
+
+## Configuration Pattern
+```typescript
+interface Config {
+  weaviate: WeaviateConfig;
+  embeddings: EmbeddingConfig;
+  server: ServerConfig;
+  auth: AuthConfig;
+}
+
+const config: Config = {
+  weaviate: {
+    url: process.env.WEAVIATE_URL || 'http://localhost:8080',
+    apiKey: process.env.WEAVIATE_API_KEY,
+    collectionName: process.env.WEAVIATE_COLLECTION_NAME || 'documents'
+  },
+  embeddings: {
+    provider: process.env.AI_SDK_PROVIDER || 'openai',
+    model: process.env.EMBEDDING_MODEL || 'text-embedding-ada-002',
+    apiKey: process.env.OPENAI_API_KEY,
+    baseUrl: process.env.LOCAL_LLM_BASE_URL
+  },
+  // ... other config
+};
+```

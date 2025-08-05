@@ -1,0 +1,38 @@
+---
+globs: 
+alwaysApply: false
+title: MCP Protocol Implementation
+description: Guidelines for implementing MCP tools and handling errors.
+---
+
+# MCP Protocol Implementation
+
+## Tool Definitions
+When implementing MCP tools, follow these patterns:
+
+```typescript
+// Tool schema definition
+const knowledgeBaseSearchTool: MCPTool = {
+  name: "knowledge_base_search",
+  description: "Search the knowledge base using semantic similarity",
+  inputSchema: {
+    type: "object",
+    properties: {
+      query: { type: "string", description: "Search query text" },
+      limit: { type: "number", default: 10, description: "Maximum results" },
+      filters: { type: "object", description: "Search filters" },
+      similarity_threshold: { type: "number", default: 0.7, description: "Minimum similarity score" }
+    },
+    required: ["query"]
+  },
+  handler: async (args, context) => {
+    // Implementation with proper error handling
+  }
+};
+```
+
+## Error Handling
+- Always validate input parameters
+- Return structured error responses
+- Log errors with appropriate context
+- Implement retry logic for external service calls

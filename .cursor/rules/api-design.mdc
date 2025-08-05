@@ -1,0 +1,39 @@
+---
+description: Guidelines for designing and implementing APIs.
+globs: 
+alwaysApply: false
+---
+
+# API Design
+
+## REST API Standards (Hono-based)
+- Use consistent URL patterns and HTTP methods
+- Implement proper status codes and error responses
+- Add request/response validation
+- Include pagination for list endpoints
+- Provide comprehensive API documentation
+
+## MCP Protocol Standards
+- Follow MCP specification exactly
+- Implement proper tool schemas with validation
+- Use streaming for large data sets
+- Provide meaningful error messages
+- Include proper resource management
+
+## Hono Route Structure
+```typescript
+import { Hono } from 'hono'
+import { cors } from 'hono/cors'
+import { logger } from 'hono/logger'
+
+const app = new Hono()
+
+// Middleware
+app.use('*', cors())
+app.use('*', logger())
+
+// Routes
+app.route('/api/v1', apiRoutes)
+app.route('/mcp', mcpRoutes)
+app.route('/ws', websocketRoutes)
+```
