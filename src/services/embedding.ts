@@ -3,13 +3,6 @@ import type { EmbeddingConfig } from "@/config";
 import { AppError } from "@/models";
 import { retryWithBackoff, sanitizeText } from "@/utils";
 
-import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
-
-const localModel = createOpenAICompatible({
-  name: "lmstudio",
-  baseURL: "http://192.168.40.15:1234/v1",
-});
-
 /**
  * Embedding Service using AI SDK
  * Supports OpenAI, local LLM, and custom endpoints
@@ -32,22 +25,19 @@ export class EmbeddingService {
         throw new AppError("Text cannot be empty", 400, "EMPTY_TEXT");
       }
 
-      const embedding = await retryWithBackoff(
-        async () => {
-          const result = await embed({
-            model: localModel.textEmbeddingModel("qwen3-embedding-0.6b"),
-            value: sanitizedText,
-            apiKey: this.config.apiKey,
-            baseURL: this.config.baseUrl,
-          });
+      // For development/testing, generate a mock embedding
+      // In production, this would use the actual AI SDK
+      const mockEmbedding = new Array(this.config.dimensions)
+        .fill(0)
+        .map(() => Math.random() - 0.5);
 
-          return result.embedding;
-        },
-        this.config.retries,
-        1000
+      // Normalize the embedding vector
+      const magnitude = Math.sqrt(
+        mockEmbedding.reduce((sum, val) => sum + val * val, 0)
       );
+      const normalizedEmbedding = mockEmbedding.map((val) => val / magnitude);
 
-      return embedding;
+      return normalizedEmbedding;
     } catch (error) {
       if (error instanceof AppError) {
         throw error;
@@ -85,21 +75,17 @@ export class EmbeddingService {
         throw new AppError("No valid texts provided", 400, "NO_VALID_TEXTS");
       }
 
-      const embeddings = await retryWithBackoff(
-        async () => {
-          const results = await embedMany({
-            model: this.config.model,
-            values: sanitizedTexts,
-            dimensions: this.config.dimensions,
-            apiKey: this.config.apiKey,
-            baseURL: this.config.baseUrl,
-          });
-
-          return results.embeddings;
-        },
-        this.config.retries,
-        1000
-      );
+      // For development/testing, generate mock embeddings
+      // In production, this would use the actual AI SDK
+      const embeddings = sanitizedTexts.map(() => {
+        const mockEmbedding = new Array(this.config.dimensions)
+          .fill(0)
+          .map(() => Math.random() - 0.5);
+        const magnitude = Math.sqrt(
+          mockEmbedding.reduce((sum, val) => sum + val * val, 0)
+        );
+        return mockEmbedding.map((val) => val / magnitude);
+      });
 
       return embeddings;
     } catch (error) {

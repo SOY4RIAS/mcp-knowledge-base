@@ -78,6 +78,58 @@ export class WeaviateService {
             name: "metadata",
             dataType: ["object"],
             description: "Additional document metadata",
+            nestedProperties: [
+              {
+                name: "source",
+                dataType: ["text"],
+                description: "Document source",
+              },
+              {
+                name: "type",
+                dataType: ["text"],
+                description: "Document type",
+              },
+              {
+                name: "author",
+                dataType: ["text"],
+                description: "Document author",
+              },
+              {
+                name: "tags",
+                dataType: ["text[]"],
+                description: "Document tags",
+              },
+              {
+                name: "language",
+                dataType: ["text"],
+                description: "Document language",
+              },
+              {
+                name: "size",
+                dataType: ["int"],
+                description: "Document size in bytes",
+              },
+              {
+                name: "mime_type",
+                dataType: ["text"],
+                description: "Document MIME type",
+              },
+              {
+                name: "extracted_text",
+                dataType: ["text"],
+                description: "Extracted text content",
+              },
+              {
+                name: "filePath",
+                dataType: ["text"],
+                description: "File path for self-indexing",
+              },
+              {
+                name: "custom_fields",
+                dataType: ["text"],
+                description: "Custom metadata fields as JSON string",
+              },
+            ],
           },
           {
             name: "created_at",
@@ -125,7 +177,18 @@ export class WeaviateService {
         author: document.metadata.author || "",
         tags: document.metadata.tags,
         language: document.metadata.language,
-        metadata: document.metadata,
+        metadata: {
+          source: document.metadata.source,
+          type: document.metadata.type,
+          author: document.metadata.author || "",
+          tags: document.metadata.tags,
+          language: document.metadata.language,
+          size: document.metadata.size,
+          mime_type: document.metadata.mime_type,
+          extracted_text: document.metadata.extracted_text || "",
+          filePath: document.metadata.filePath || "",
+          custom_fields: JSON.stringify(document.metadata.custom_fields || {}),
+        },
         created_at: document.created_at,
         updated_at: document.updated_at,
       };
