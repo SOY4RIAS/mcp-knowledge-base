@@ -244,6 +244,30 @@ services:
 
 ## 🧪 Testing
 
+The project follows Bun testing standards with a comprehensive testing strategy including unit tests, integration tests, and end-to-end tests.
+
+### Testing Strategy
+
+#### Unit Tests
+- **Location**: `src/tests/unit/`
+- **Purpose**: Test individual functions and classes in isolation
+- **Coverage**: Services, utilities, models, and business logic
+- **Mocking**: External dependencies (Weaviate, Redis, AI SDK)
+
+#### Integration Tests
+- **Location**: `src/tests/integration/`
+- **Purpose**: Test service interactions and API endpoints
+- **Coverage**: Service integration, database operations, API responses
+- **Dependencies**: May require test databases and external services
+
+#### End-to-End Tests
+- **Location**: `src/tests/e2e/`
+- **Purpose**: Test complete user workflows and system behavior
+- **Coverage**: Full application lifecycle, MCP protocol compliance
+- **Dependencies**: Full application stack with test environment
+
+### Test Commands
+
 ```bash
 # Run all tests
 bun test
@@ -255,9 +279,52 @@ bun test --coverage
 bun test --watch
 
 # Run specific test suites
-bun test src/tests/basic.test.ts
-bun test src/tests/integration.test.ts
+bun test src/tests/unit/          # Unit tests only
+bun test src/tests/integration/   # Integration tests only
+bun test src/tests/e2e/           # E2E tests only
+
+# Run tests with specific patterns
+bun test --test-name-pattern "embedding"  # Tests with "embedding" in name
+bun test --test-name-pattern "search"     # Tests with "search" in name
+
+# Run tests with preload setup
+bun test --preload ./src/tests/setup.ts
+
+# Run todo tests (tests marked as .todo)
+bun test --todo
 ```
+
+### Test Configuration
+
+The project uses Bun's built-in test runner with Jest-compatible API. Configuration is handled through:
+
+- **bunfig.toml**: Global test configuration
+- **Test setup**: `src/tests/setup.ts` for global test environment
+- **Test utilities**: `src/tests/utils/` for common test helpers
+- **Fixtures**: `src/tests/fixtures/` for test data
+
+### Test Coverage
+
+The testing strategy aims for:
+- **Unit Tests**: 90%+ coverage of business logic
+- **Integration Tests**: 80%+ coverage of service interactions
+- **E2E Tests**: Critical user workflows and MCP protocol compliance
+
+### Testing Best Practices
+
+1. **Isolation**: Each test should be independent and not rely on other tests
+2. **Mocking**: External dependencies should be mocked in unit tests
+3. **Fixtures**: Use consistent test data and fixtures
+4. **Cleanup**: Always clean up test data and resources
+5. **Naming**: Use descriptive test names that explain the expected behavior
+6. **Performance**: Tests should run quickly and efficiently
+
+### Test Environment
+
+Tests can run in different environments:
+- **Development**: Uses local dependencies and mock services
+- **CI/CD**: Uses containerized test environment
+- **Production**: Uses staging environment for E2E tests
 
 ## 🐳 Docker Deployment
 

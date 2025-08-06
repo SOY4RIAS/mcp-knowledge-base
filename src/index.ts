@@ -101,7 +101,6 @@ class MCPKnowledgeBaseServer {
     this.app.get("/health", async (c) => {
       try {
         const connections = await this.documentService.testConnections();
-        const stats = await this.documentService.getStats();
         const redisConnected = this.redisService.isRedisConnected();
 
         const health = {
@@ -123,17 +122,23 @@ class MCPKnowledgeBaseServer {
               status: redisConnected ? "healthy" : "unhealthy",
             },
           },
-          stats,
+          stats: {
+            totalDocuments: 0, // Will be implemented later
+            collectionName: "documents",
+          },
         };
 
         return c.json(health);
       } catch (error) {
         console.error("Health check failed:", error);
-        return c.status(500).json({
-          status: "unhealthy",
-          timestamp: new Date(),
-          error: "Health check failed",
-        });
+        return c.json(
+          {
+            status: "unhealthy",
+            timestamp: new Date(),
+            error: "Health check failed",
+          },
+          500
+        );
       }
     });
 
@@ -150,10 +155,13 @@ class MCPKnowledgeBaseServer {
         });
       } catch (error) {
         console.error("Self-indexing failed:", error);
-        return c.status(500).json({
-          success: false,
-          error: "Self-indexing failed",
-        });
+        return c.json(
+          {
+            success: false,
+            error: "Self-indexing failed",
+          },
+          500
+        );
       }
     });
 

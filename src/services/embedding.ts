@@ -113,7 +113,10 @@ export class EmbeddingService {
   /**
    * Validate embedding dimensions
    */
-  validateEmbeddingDimensions(embedding: number[]): boolean {
+  validateEmbeddingDimensions(embedding: number[] | null | undefined): boolean {
+    if (!embedding || !Array.isArray(embedding)) {
+      return false;
+    }
     return embedding.length === this.config.dimensions;
   }
 
