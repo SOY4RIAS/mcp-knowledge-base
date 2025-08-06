@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mcp-knowledge-base": {
+      "command": "bun",
+      "args": ["run", "start"],
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3000",
+        "WEAVIATE_URL": "http://localhost:8080",
+        "REDIS_URL": "redis://localhost:6379",
+        "JWT_SECRET": "your-super-secret-jwt-key-that-is-at-least-32-characters-long",
+        "OPENAI_API_KEY": "your-openai-api-key"
+      }
+    }
+  }
+} 
