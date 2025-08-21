@@ -5,7 +5,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Weaviate](https://img.shields.io/badge/Weaviate-1.32+-orange?logo=weaviate)](https://weaviate.io/)
 
-A comprehensive **Model Context Protocol (MCP) server** that serves as a **self-referential knowledge base** using vector database technology. This innovative system enables AI assistants to access, search, and retrieve information through semantic search capabilities while automatically documenting and improving itself.
+A comprehensive **Model Context Protocol (MCP) server** that serves as a **self-referential knowledge base** using vector database technology. This system enables AI assistants to access, search, and retrieve information through semantic search capabilities while automatically documenting and improving itself.
 
 ## 🌟 Key Features
 
